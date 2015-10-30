@@ -46,8 +46,8 @@ package.json 文件和 GruntFile 文件一样都位于项目的根目录下，�
 
 有以下几种方式可以创建一个 package.json 文件：
 
-大部分的 grunt-init (http://gruntjs.com/project-scaffolding) 模板会自动创建一个与此项目相关的 package.json 文件
-npm init 命令会自动创建一个基本的 package.json 文件
+大部分的 grunt-init (http://gruntjs.com/project-scaffolding) 模板会自动创建一个与此项目相关的 package.json 文件。
+npm init 命令 会自动创建一个基本的 package.json 文件
 用下面这个例子作为开始，然后在添加自己需要的配置，可以参考这里（https://npmjs.org/doc/json.html）
 {
   "name": "my-project-name",
@@ -142,15 +142,42 @@ module.exports = function(grunt) {
 grunt.initConfig({
   pkg: grunt.file.readJSON('package.json'),
   uglify: {
+     //文件头部输出信息
     options: {
       banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
     },
     build: {
+      //源文件
       src: 'src/<%= pkg.name %>.js',
+      //目标文件
       dest: 'build/<%= pkg.name %>.min.js'
     }
   }
 });
+
+代码分析：
+initConfig用于配置构建信息，第一个参数必须是个object。 [作者理解：本例传入一个grunt参数就是第一个object.]
+// 构建任务配置
+grunt.initConfig({   });
+
+读取json文件
+grunt.file.readJSON(path)
+将读取的json赋值给pkg字段，想要获取配置的值，就可以使用pkg.name这样的形式。
+
+加载指定插件任务
+grunt.loadNpmTasks(pluginName)
+
+
+注册任务
+grunt.registerTask(taskName,taskArray)
+
+比如：grunt.registerTask('default', ['uglify']);  注册默认执行的任务，即你运行grunt命令时，触发的任务构建。
+第二个参数为任务目标名，在initConfig()中配置：
+
+uglify为任务目标名，options为grunt-contrib-uglify插件配置参数。
+banner向输出文件打印你需要的信息。
+build为具体任务构建配置，分别指定src和dest
+
 
 
 1.8.3 加载grunt插件和任务
