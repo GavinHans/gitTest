@@ -24,7 +24,7 @@ npm install -g grunt-cli
 假设 Grunt CLI 已经安装好了，并且项目通过 package.json 和GruntFile这两个文件已经正确配置好了。那么非常简单就可以使用 grunt：
 
 进到项目的根目录。
-运行 npm install 来安装需要的软件包。
+运行 npm install 来安装需要的软件包。依赖拉取成功后，在工程中生成了node_modules目录，该目录就包含了grunt插件模块的代码。
 运行 grunt 命令
 这就是你需要做的全部事情。
 
@@ -60,7 +60,14 @@ npm init 命令会自动创建一个基本的 package.json 文件
 }
 
 1.6 安装 Grunt 和 grunt插件
-把grunt和grunt插件加入一个已经存在的package.json 文件最简单的方式就是使用 npm install <module> --save-dev命令。这个命令不仅会在本地安装 <module>，而且会使用tilde version range（https://npmjs.org/doc/json.html#Tilde-Version-Ranges）自动把它加入到依赖关系中。
+进入grunt官网的插件列表页面 http://www.gruntjs.net/plugins.第一类是grunt团队贡献的插件，这些插件的名字前面都带有“contrib-”前缀，而且在插件列表中有星号标注。第二类是第三方提供的插件，不带有这两个特征。
+
+把grunt和grunt插件加入一个已经存在的package.json 文件最简单的方式就是使用 npm install <module> --save-dev命令。
+
+这个命令不仅会在本地安装 <module>，而且会使用tilde version range（https://npmjs.org/doc/json.html#Tilde-Version-Ranges）自动把它加入到依赖关系中。
+
+“—save-dev”的意思是，在当前目录安装grunt的同时，顺便把grunt保存为这个目录的开发依赖项。配置package.json时，其中的“devDependencies”中就会存储开发依赖项。
+
 
 安装grunt插件和其他的nodejs插件都可以使用同样的命令，并且会把它加到依赖关系中。注意把更新后的 package.json 文件也提交到你的项目中。
 
