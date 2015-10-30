@@ -1,0 +1,47 @@
+开发环境：nodejs + grunt + ruby + sass + smartgit +XAMPP Apache
+
+下载nodejs.exe        http://nodejs.org/
+下载ruby 安装           http://rubyinstaller.org/downloads/
+下载smartgit 安装
+下载xampp安装        https://www.apachefriends.org/
+
+
+step01:install grunt
+cmd: npm install -g grunt-cli
+check version：nodejs -v
+
+grunt config： created two files:package.json and Gruntfile.js
+run cmd: npm init ,so you can get  the package.json is initialization。 then you can customize project infomation.
+接下来配置Gruntfile.js 文件
+文件大致结构：
+module.exprots=function(grunt){
+  grunt.initConfig({
+      //难点在于插件的配置属性，？继续理解和写demo.
+   });
+  grunt.loadNpmTasks();
+  grunt.registerTask();
+
+}
+
+然后安装插件：请参考grunt插件官网安装：npm install grunt --save-dev
+在然后执行默认任务。grunt 配置完毕。
+
+
+
+step02:install sass
+cmd:  gem install sass
+check version： sass -v / ruby -v
+
+
+add compass
+
+http://ju.outofmemory.cn/feed/1105/?page=2
+
+add  sass
+http://www.w3cplus.com/blog/tags/302.html
+
+from sass to css
+http://www.w3cplus.com/tools/get-up-running-grunt.html
+
+
+
